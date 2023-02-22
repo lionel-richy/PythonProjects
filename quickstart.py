@@ -9,67 +9,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-import speech_recognition as sr
-from gtts import gTTS
-import os
-import time
-import pyaudio
-import playsound
-
-
 # If modifying these scopes, delete the file token.json.
 SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
-
-
-
-
-
-
-
-
-def speak(text):
-    tts = gTTS(text=text, lang='en')
-    filename = 'voice.mp3'
-    tts.save(filename)
-    playsound.playsound(filename)
-    
-
-
-def get_audio():
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        audio = r.listen(source)
-        said = ""
-
-        try:
-            said = r.recognize_google(audio)
-            print(said)
-        except Exception as e:
-            print("Exception: " + str(e))
-
-    return said
-
-
-#speak("Hello")
-#get_audio()
-#text = get_audio()
-
-#if "Hi" in text:
-    #speak("How, are you?")
-#elif "What is your name?" in text:
-    #speak("My Name ist lionel")
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 def main():
